@@ -48,16 +48,27 @@ def height_recursive(node):
     return 1 + max(height_recursive(node.left), height_recursive(node.right))
 
 def height_non_recursive(node):
+    # base case
     if node is None:
         return 0
+    #use queue
     q = deque()
+
+    #initialize height to 0
     height = 0
+
+    #add root node to queue
     q.append(node)
+
     while True:
         node_count = len(q)
         if node_count == 0:
             return height
+
+        #increment height on every level
         height += 1
+
+        #while all node of current level are not process stay in this loop and next level nodes
         while node_count > 0:
 
             node = q[0]
