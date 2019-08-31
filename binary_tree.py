@@ -25,6 +25,48 @@ def post_order_traversal(node):
         print(node.val, end=' ')
 
 
+from collections import deque
+
+
+def level_order_print(node):
+    if node is None:
+        return None
+    q = deque()
+    q.append(node)
+    while q:
+        new_node = q.popleft();
+        print(new_node.val, end=' ')
+        if new_node.left is not None:
+            q.append(new_node.left)
+        if new_node.right is not None:
+            q.append(new_node.right)
+
+
+def height_recursive(node):
+    if node is None:
+        return 0
+    return 1 + max(height_recursive(node.left), height_recursive(node.right))
+
+def height_non_recursive(node):
+    if node is None:
+        return 0
+    q = deque()
+    height = 0
+    q.append(node)
+    while True:
+        node_count = len(q)
+        if node_count == 0:
+            return height
+        height += 1
+        while node_count > 0:
+
+            node = q[0]
+            q.popleft()
+            if node.left is not None:
+                q.append(node.left)
+            if node.right is not None:
+                q.append(node.right)
+            node_count -= 1
 
 '''
 Binary tree as follows : 
@@ -38,6 +80,8 @@ Binary tree as follows :
  preorder traversal : 1 2 4 5 3
  posrorder traversal: 4 5 2 3 1      
 
+level_order_print: 1 2 3 4 5
+height is 3
 '''
 root = BinaryTree(1)
 root.left = BinaryTree(2)
@@ -50,5 +94,10 @@ print()
 pre_order_traversal(root)
 print()
 post_order_traversal(root)
-
+print()
+level_order_print(root)
+print()
+print("height of binary tree is: {}".format(height_recursive(root)))
+print()
+print("height of binary tree is: {}".format(height_non_recursive(root)))
 
