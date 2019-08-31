@@ -68,7 +68,7 @@ def height_non_recursive(node):
         #increment height on every level
         height += 1
 
-        #while all node of current level are not process stay in this loop and next level nodes
+        #while all node of current level are not process stay in this loop and add next level nodes
         while node_count > 0:
 
             node = q[0]
