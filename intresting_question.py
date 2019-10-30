@@ -11,6 +11,7 @@ A user can have more than one favorite genre if he/she has listened to the same 
 the genres.
  """
 
+
 def get_favourite_genre(songs, genre):
     res = {}
     for k in songs:
@@ -77,7 +78,33 @@ output_2 = {
     "Emma":  []
 }
 
+
+user_songs_3 = {
+    "David": ["song1", "song2", "song3", "song4", "song8", "song10"],
+    "Emma":  ["song5", "song6", "song7"]
+}
+
+song_genres_3 = {
+    "Rock":    ["song1", "song3", "song10"],
+    "Dubstep": ["song7"],
+    "Techno":  ["song2", "song4"],
+    "Pop":     ["song5", "song6"],
+    "Jazz":    ["song8", "song9"]
+}
+
+output_3 = {
+    "David": ["Rock"],
+    "Emma":  ["Pop"]
+}
+
+""" Why?
+  David has 3 Rock songs.
+  Emma has 2 Pop and 1 Dubstep song. Pop is Emma's favorite genre. """
+
+
 print(get_favourite_genre(user_songs_1, song_genres_1))
 print(get_favourite_genre(user_songs_2, song_genres_2))
+print(get_favourite_genre(user_songs_3, song_genres_3))
 assert(get_favourite_genre(user_songs_1, song_genres_1) == output_1)
 assert(get_favourite_genre(user_songs_2, song_genres_2) == output_2)
+assert(get_favourite_genre(user_songs_3, song_genres_3) == output_3)
